@@ -9,7 +9,7 @@ import {UsersService} from "../../services/user.service";
 
 @Component({
   selector: "app-stepper-component",
-  templateUrl: "./stepper-component.component.html",
+  templateUrl: './stepper-component.component.html',
   styleUrls: ["./stepper-component.component.css"],
 })
 export class StepperComponentComponent implements  OnInit, OnDestroy {
@@ -19,7 +19,7 @@ export class StepperComponentComponent implements  OnInit, OnDestroy {
   num = 0;
   checked = false;
   userAnswer = [];
-  isLoading =  false; 
+  isLoading =  false;
 
   hideSpinner(){
     this.isLoading = false;
@@ -80,12 +80,12 @@ export class StepperComponentComponent implements  OnInit, OnDestroy {
 
   // this.searchElement.nativeElement.focus();
 
-  getTimeAndPrice(event, price: number, time: number, radio: boolean, num: number, pages:any, answer: any, chosen: boolean) {
+  getTimeAndPrice(event, price: number, time: number, radio: boolean, num: number, pages:any, answer: any, chosen: boolean, pageID: number) {
     this.estimateService.sendEstimatedTimeAndPrice(event, price, time, radio, num);
-    this.addAnswersIfTheyAreChosen(chosen, answer);
+    this.addAnswersIfTheyAreChosen(chosen, answer, pageID);
   }
 
-  addAnswersIfTheyAreChosen(chosen: boolean, answer: any) {
+  addAnswersIfTheyAreChosen(chosen: boolean, answer: any, pageID: number ) {
     /// collect selected answers
     /// if answer is chosen then add it to [this,userAnswer]
     /// else
@@ -93,13 +93,14 @@ export class StepperComponentComponent implements  OnInit, OnDestroy {
     /// the last added item in array
     if(chosen) {
       const answers = {
-        answer: answer
+        answer: answer,
+        choiceID: pageID,
       }
       console.log(answers);
       this.userAnswer.push(answers);
       console.log(this.userAnswer);
     } else {
-      this.userAnswer.splice(-1,1);
+      this.userAnswer = this.userAnswer.filter(({choiceID}) => choiceID !== pageID);
       console.log(this.userAnswer);
     }
   }
