@@ -1,0 +1,25 @@
+.main-form-component {
+  display: flex;
+  position: fixed;
+  /* position: absolute; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.main-form-card {
+  /* height: 80%; */
+  padding: 0 0 0 0;
+  background-color: #3C454C;
+  border-radius: 4px 4px 0px 0px;
+  width: 550px;
+  /* position: absolute; */
+}
+
+
+.form-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-content: flex-start; */
+}

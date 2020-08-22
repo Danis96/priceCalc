@@ -1,0 +1,100 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: #01191d;
+    /* background-color: white; */
+}
+
+
+.mat-horizontal-stepper-header {
+    display: flex;
+    height: 72px;
+    overflow: hidden;
+    align-items: center;
+    padding: 0 14px;
+}
+
+.mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+    background-color: #88CF2A;
+    margin-right: 0px;
+}
+
+.mat-horizontal-stepper-header {
+    height: 45px;
+    width: 10px;
+    padding: 0px;
+    pointer-events: none;
+}
+
+.mat-icon {
+    display: none;
+}
+
+.mat-stepper-horizontal-line {
+    display: none;
+}
+
+.mat-horizontal-stepper-header-container {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mat-horizontal-stepper-content {
+    /* Mozda bi trebalo setati max-height: some value i overflow-y: auto; ili overflow: auto */
+    height: 225px;
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    /* background: #f1f1f1; */
+    background: #c5cfb7;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background: #87aa59;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #88CF2A;
+}
+
+/* .mat-horizontal-stepper-header {
+    display: flex;
+    height: 72px;
+    overflow: hidden;
+    align-items: center;
+    padding: 0 10px;
+} */
+.mat-step-icon-content,
+.mat-step-icon .mat-icon {
+    position: absolute;
+    /* top: 50%; */
+    /* left: 50%; */
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.mat-step-header .mat-step-icon {
+    border-radius: 50%;
+    height: 14px;
+    width: 14px;
+    flex-shrink: 0;
+    position: relative;
+    margin-right: 0px;
+}

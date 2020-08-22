@@ -1,0 +1,43 @@
+<!-- <mat-horizontal-stepper linear> -->
+<div class="headline">
+  <h4>{{fetchedJson['headlines'][num].title}}</h4>
+  <p>{{fetchedJson['headlines'][num].question}}</p>
+</div>
+<mat-horizontal-stepper #stepper>
+  <mat-step *ngFor="let pages of fetchedJson.pages" completed="false">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form *ngIf="!isLoading" (submit)="onSendEmail(emailForm)" #emailForm="ngForm">
+      <div class="emailForm" *ngIf="pages[0].showSubmitButton">
+
+        <p>Your Name *</p>
+        <input  class="emailFormInput" #name name="name" type="text" placeholder="Name" ngModel>
+        <p>Email adress*</p>
+        <input  class="emailFormInput" #email name="email" type="text" placeholder="Email address" ngModel>
+        <h2>OPTIONAL</h2>
+        <p class="question-paragraph">Choose if you want some of our aditional services</p>
+      </div>
+
+      <div class="form" [ngStyle]="{width:changeWidth()}" *ngFor="let page of pages; let i = index">
+        <div class="inputGroup">
+          <input id="option{{page.id}}"  [(ngModel)]="page.chosen" name="option{{page.id}}" type="checkbox"
+            (change)="getTimeAndPrice($event, page.price, page.estimated, page.radio, num, pages, page.name)"  checked="checked" class="radio"/>
+          <label for="option{{page.id}}">{{page.name}}</label>
+        </div>
+      </div>
+      <!-- <div class="buttons-container">
+      <button class="button previous" *ngIf="pages[0].id > 1" mat-button matStepperPrevious>Back</button>
+      <button class="button next" *ngIf="pages[0].showSubmitButton==false" mat-button matStepperNext>Next</button>
+      <button type="submit" class="button" mat-button *ngIf="pages[0].showSubmitButton">Submit</button>
+    </div>-->
+    </form>
+  </mat-step>
+  <app-home-button-component></app-home-button-component>
+</mat-horizontal-stepper>
+
+<div class="buttons-container">
+  <button *ngIf="num > 0" class="button previous" mat-button (click)="goBack(stepper)">Back</button>
+  <button *ngIf="num !== fetchedJson.pages.length -1 " class="button next" [disabled]="buttonState()" mat-button
+    (click)="goForward(stepper)">Next</button>
+  <a *ngIf=" num === fetchedJson.pages.length - 1 " class="button" routerLink="/estimate/confirmation"
+    mat-button (click)="getUsersAnswers()" >Submit</a>
+</div>
