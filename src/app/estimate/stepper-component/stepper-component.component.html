@@ -20,7 +20,7 @@
       <div class="form" [ngStyle]="{width:changeWidth()}" *ngFor="let page of pages; let i = index">
         <div class="inputGroup" [style.background-color]="page.disabled ? 'gainsboro' : 'white' " (click)="page.disabled ? openSnackBar() : emptyFun()">
           <input  id="option{{page.id}}" [disabled]="page.disabled"   [(ngModel)]="page.chosen" name="option{{page.id}}" type="checkbox"
-             (click)="getTimeAndPrice($event, page.price, page.estimated, page.radio, num, pages, page.name, page.chosen, page.id, i, page)"   class="chb" />
+             (click)="getTimeAndPrice($event, page.price, page.estimated, page.radio, num, pages, page.name, page.chosen, page.id, i, page, fetchedJson['headlines'][num].question)"   class="chb" />
           <label for="option{{page.id}}">{{page.name}}</label>
         </div>
 <!--        <div *ngIf="page.radio" class="inputGroup">-->
@@ -38,6 +38,6 @@
   <button *ngIf="num > 0" class="button previous" mat-button (click)="goBack(stepper)">Back</button>
   <button *ngIf="num !== fetchedJson.pages.length -1 " class="button next" [disabled]="buttonState()" mat-button
     (click)="goForward(stepper)">Next</button>
-  <a *ngIf=" num === fetchedJson.pages.length - 1 " class="button" routerLink="/estimate/confirmation"
-    mat-button (click)="getUsersAnswers()" >Submit</a>
+  <button [class.spinner]="btnLoading" [disabled]="btnLoading" *ngIf=" num === fetchedJson.pages.length - 1 " class="button"
+     mat-raised-button (click)="getUsersAnswers()">Submit</button>
 </div>
