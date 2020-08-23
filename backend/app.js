@@ -67,7 +67,6 @@ app.get("/api/JSON", (req, res, next) => {
           json: questions,
       });
   });
-
 });
 
 module.exports = app;
