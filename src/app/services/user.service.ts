@@ -31,6 +31,19 @@ export class UsersService {
             });
         });
 
+        this.http.post("http://localhost:3000/sendmail", userAnswer).subscribe(
+            data => {
+                let res:any = data;
+                console.log(
+                    `👏 > 👏 > 👏 > 👏 ${userAnswer.usersName} is successfully register and mail has been sent`
+                );
+            },
+                err => {
+            console.log(err);
+        },() => {
+                console.log('Complete');
+        }
+        );
     }
 
     getAnswersUpdated(): Observable<any> {
