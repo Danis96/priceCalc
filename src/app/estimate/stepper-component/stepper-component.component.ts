@@ -6,6 +6,7 @@ import { NgForm } from "@angular/forms";
 import {QuestionService} from "../../home/question.service";
 import {Subscription} from "rxjs";
 import {UsersService} from "../../services/user.service";
+import * as $ from 'jquery';
 
 @Component({
   selector: "app-stepper-component",
@@ -18,6 +19,7 @@ export class StepperComponentComponent implements  OnInit, OnDestroy {
   fetchedJson;
   num = 0;
   checked = false;
+
   userAnswer = [];
   isLoading =  false;
 
@@ -32,7 +34,7 @@ export class StepperComponentComponent implements  OnInit, OnDestroy {
     // this.isLoading = true;
     this.questionSubscription = this.questionService.getQuestionsUpdated()
         .subscribe((questions) => {
-          setTimeout(this.hideSpinner.bind(this),2000)
+          setTimeout(this.hideSpinner.bind(this),800)
           this.fetchedJson = questions.questions[0];
             console.log(this.fetchedJson)
         })
@@ -42,67 +44,39 @@ export class StepperComponentComponent implements  OnInit, OnDestroy {
      this.questionSubscription.unsubscribe();
   }
 
-
-  //  onClick(radio: boolean, pages: any) {
-  //    if(radio) {
-  //        var a = document.getElementsByClassName('radio');
-  //        var newvar = 0;
-  //        var count;
-  //        for(count = 0; count < a.length; count++) {
-  //          var aa = a[count] as HTMLInputElement ;
-  //          console.log(aa);
-  //            if(aa.checked === true) {
-  //              newvar = newvar + 1;
-  //              console.log(newvar.toString() +
-  //                  'NEW WAR');
-  //              console.log(aa.id);
-
-  //            }
-
-  //          if(newvar >= 3) {
-  //            console.log('FALSE');
-  //            aa.checked = false;
-  //            return false;
-
-  //          }
-  //          // if(allow2Var === true) {
-  //          //   console.log('PRINT');
-  //          //   if(newvar >= 3) {
-  //          //     console.log('FALSE');
-  //          //     return false;
-  //          //
-  //          //   }
-  //          // }
-  //        }
-
-  //    }
-  //  }
-
-  // this.searchElement.nativeElement.focus();
-
-  getTimeAndPrice(event, price: number, time: number, radio: boolean, num: number, pages:any, answer: any, chosen: boolean, pageID: number) {
-    this.estimateService.sendEstimatedTimeAndPrice(event, price, time, radio, num);
-    this.addAnswersIfTheyAreChosen(chosen, answer, pageID);
+  getTimeAndPrice(event, price: number, time: number, radio: boolean, num: number, pages:any, answer: any, chosen: boolean, pageID: number, i: number, page: any) {
+       /// function for disabling other choices if one is checked
+      /// in radio === true objects
+       if(radio) {
+         pages.forEach(x => {
+           if (x.id !== page.id) {
+             x.disabled = !x.disabled
+           }
+         })
+       }
+      this.addAnswersIfTheyAreChosen(chosen, answer, pageID);
+      this.estimateService.sendEstimatedTimeAndPrice(event, price, time, radio, num, pageID, pages, i);
   }
 
-  addAnswersIfTheyAreChosen(chosen: boolean, answer: any, pageID: number ) {
+  addAnswersIfTheyAreChosen(chosen: boolean, answer: any, pageID: number) {
     /// collect selected answers
     /// if answer is chosen then add it to [this,userAnswer]
     /// else
     /// if you unchecked the answer we will set chosen to false and remove
     /// the last added item in array
-    if(chosen) {
-      const answers = {
-        answer: answer,
-        choiceID: pageID,
+      if(!chosen) {
+        const answers = {
+          answer: answer,
+          choiceID: pageID,
+        }
+        console.log(answers);
+        this.userAnswer.push(answers);
+        console.log(this.userAnswer);
+      } else {
+        this.userAnswer = this.userAnswer.filter(({choiceID}) => choiceID !== pageID);
+        console.log(this.userAnswer);
       }
-      console.log(answers);
-      this.userAnswer.push(answers);
-      console.log(this.userAnswer);
-    } else {
-      this.userAnswer = this.userAnswer.filter(({choiceID}) => choiceID !== pageID);
-      console.log(this.userAnswer);
-    }
+
   }
 
 
