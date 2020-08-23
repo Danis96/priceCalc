@@ -6,7 +6,7 @@ import { NgForm } from "@angular/forms";
 import {QuestionService} from "../../home/question.service";
 import {Subscription} from "rxjs";
 import {UsersService} from "../../services/user.service";
-import * as $ from 'jquery';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: "app-stepper-component",
@@ -14,7 +14,7 @@ import * as $ from 'jquery';
   styleUrls: ["./stepper-component.component.css"],
 })
 export class StepperComponentComponent implements  OnInit, OnDestroy {
-  constructor(public estimateService: EstimateService, public questionService: QuestionService, public usersService: UsersService) {}
+  constructor(public estimateService: EstimateService, public questionService: QuestionService, public usersService: UsersService, private _snackBar: MatSnackBar) {}
 
   fetchedJson;
   num = 0;
@@ -44,6 +44,16 @@ export class StepperComponentComponent implements  OnInit, OnDestroy {
      this.questionSubscription.unsubscribe();
   }
 
+  openSnackBar() {
+    this._snackBar.open('You can only select one answer', '', {
+        duration: 1000,
+    });
+  }
+
+  emptyFun() {
+    console.log('Empty');
+  }
+
   getTimeAndPrice(event, price: number, time: number, radio: boolean, num: number, pages:any, answer: any, chosen: boolean, pageID: number, i: number, page: any) {
        /// function for disabling other choices if one is checked
       /// in radio === true objects
@@ -52,7 +62,7 @@ export class StepperComponentComponent implements  OnInit, OnDestroy {
            if (x.id !== page.id) {
              x.disabled = !x.disabled
            }
-         })
+         });
        }
       this.addAnswersIfTheyAreChosen(chosen, answer, pageID);
       this.estimateService.sendEstimatedTimeAndPrice(event, price, time, radio, num, pageID, pages, i);

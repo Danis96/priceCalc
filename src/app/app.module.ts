@@ -7,6 +7,7 @@ import { MatStepperModule } from "@angular/material/stepper";
 import { FormsModule } from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 /// here are our components imports
 import { AppComponent } from "./app.component";
@@ -55,7 +56,8 @@ import { FooterComponentComponent } from "./estimate/confirmation-page/footer-co
     MatStepperModule,
     FormsModule,
     HttpClientModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],
