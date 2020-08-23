@@ -21,7 +21,7 @@ export class PopupButtonComponent {
              this.route.navigate([
                  '/estimate'
              ]).then(() => console.log('Navigation Done'));
-           }, 2500);
+           }, 1000);
         })
      });
   }
