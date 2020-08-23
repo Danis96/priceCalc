@@ -7,6 +7,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class QuestionService {
 
+    infoFetched;
     private jsonQuestions = [];
     private subject = new Subject<any>();
 

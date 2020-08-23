@@ -27,6 +27,7 @@ import { HomeButtonComponentComponent } from "./estimate/home-button-component/h
 import { ConfirmationPageComponent } from "./estimate/confirmation-page/confirmation-page.component";
 import { HeadlineComponentComponent } from "./estimate/confirmation-page/headline-component/headline-component.component";
 import { FooterComponentComponent } from "./estimate/confirmation-page/footer-component/footer-component.component";
+import { LoaderComponentComponent } from './home/loader-component/loader-component.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { FooterComponentComponent } from "./estimate/confirmation-page/footer-co
     ConfirmationPageComponent,
     HeadlineComponentComponent,
     FooterComponentComponent,
+    LoaderComponentComponent,
   ],
   imports: [
     BrowserModule,

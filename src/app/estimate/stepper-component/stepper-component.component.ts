@@ -14,11 +14,15 @@ import {Router} from '@angular/router';
   templateUrl: './stepper-component.component.html',
   styleUrls: ["./stepper-component.component.css"],
 })
-export class StepperComponentComponent implements  OnInit, OnDestroy {
+export class StepperComponentComponent implements  OnInit{
   constructor(public estimateService: EstimateService, public questionService: QuestionService,
               public usersService: UsersService, private _snackBar: MatSnackBar,
               private router: Router
               ) {}
+
+  ngOnInit(): void {
+      this.fetchedJson = this.questionService.infoFetched;
+  }
 
   fetchedJson;
   num = 0;
@@ -30,23 +34,6 @@ export class StepperComponentComponent implements  OnInit, OnDestroy {
 
   hideSpinner(){
     this.isLoading = false;
-  }
-
-  private questionSubscription: Subscription;
-
-  ngOnInit(): void {
-   this.questionService.getQuestions();
-    // this.isLoading = true;
-    this.questionSubscription = this.questionService.getQuestionsUpdated()
-        .subscribe((questions) => {
-          setTimeout(this.hideSpinner.bind(this),800)
-          this.fetchedJson = questions.questions[0];
-            console.log(this.fetchedJson)
-        })
-  }
-
-  ngOnDestroy(): void {
-     this.questionSubscription.unsubscribe();
   }
 
   openSnackBar() {
@@ -81,9 +68,9 @@ export class StepperComponentComponent implements  OnInit, OnDestroy {
     /// the last added item in array
       if(!chosen) {
         const answers = {
+          questionName: questionName,
           answer: answer,
-          choiceID: pageID,
-          questionName: questionName
+          choiceID: pageID
         }
         console.log(answers);
         this.userAnswer.push(answers);
