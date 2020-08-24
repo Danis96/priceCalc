@@ -57,6 +57,12 @@ body {
 .mat-icon {
     display: none;
 }
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: .4375em 0;
+    padding-bottom: 0;
+  }
+  
 input.mat-input-element {
     margin-top: -0.0625em;
     color: white;
