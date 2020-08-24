@@ -8,6 +8,10 @@ import { FormsModule } from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {ReactiveFormsModule} from '@angular/forms';
+
 
 /// here are our components imports
 import { AppComponent } from "./app.component";
@@ -59,7 +63,10 @@ import { LoaderComponentComponent } from './home/loader-component/loader-compone
     FormsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
