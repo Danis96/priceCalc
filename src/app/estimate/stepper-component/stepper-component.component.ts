@@ -1,28 +1,49 @@
-import {Component, ElementRef, OnDestroy, OnInit} from "@angular/core";
-import { ViewChild } from "@angular/core";
-import { EstimateService } from "../estimate.service";
-import { MatStepper } from "@angular/material/stepper";
-import { NgForm } from "@angular/forms";
-import {QuestionService} from "../../home/question.service";
-import {Subscription} from "rxjs";
-import {UsersService} from "../../services/user.service";
-import { MatSnackBar } from '@angular/material/snack-bar';
+import {Component, ElementRef, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {ViewChild} from '@angular/core';
+import {EstimateService} from '../estimate.service';
+import {MatStepper} from '@angular/material/stepper';
+import {NgForm} from '@angular/forms';
+import {QuestionService} from '../../home/question.service';
+import {Subscription} from 'rxjs';
+import {UsersService} from '../../services/user.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
 
 @Component({
-  selector: "app-stepper-component",
+  selector: 'app-stepper-component',
   templateUrl: './stepper-component.component.html',
-  styleUrls: ["./stepper-component.component.css"],
+  styleUrls: ['./stepper-component.component.css'],
 })
-export class StepperComponentComponent implements  OnInit{
+export class StepperComponentComponent implements OnInit, OnDestroy {
   constructor(public estimateService: EstimateService, public questionService: QuestionService,
               public usersService: UsersService, private _snackBar: MatSnackBar,
               private router: Router
-              ) {}
+  ) {
+  }
+
+  private questionSubscription: Subscription;
+
+  ngOnDestroy(): void {
+       if(!this.fetchedJson) {
+         this.questionSubscription.unsubscribe();
+       }
+  }
 
   ngOnInit(): void {
       this.fetchedJson = this.questionService.infoFetched;
+      /// if our page reloads on /estimate route, we will not be able to fetch data
+      /// so here I am checking is this.fetchedJson undefined,
+     /// if it is that means that we are on the same route so fetch data again
+      if(!this.fetchedJson) {
+        console.log('Prazan');
+        this.questionService.getQuestions();
+        this.questionSubscription = this.questionService.getQuestionsUpdated()
+            .subscribe((questions) => {
+              this.fetchedJson = questions.questions[0];
+              console.log(this.questionService.infoFetched);
+            })
+      }
   }
 
   fetchedJson;

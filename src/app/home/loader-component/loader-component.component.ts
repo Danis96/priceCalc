@@ -16,7 +16,6 @@ export class LoaderComponentComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.questionService.getQuestions();
-    // this.isLoading = true;
     this.questionSubscription = this.questionService.getQuestionsUpdated()
         .subscribe((questions) => {
           this.questionService.infoFetched = questions.questions[0];
