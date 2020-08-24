@@ -1,5 +1,11 @@
 .popup-button {
-    background-color:#36c02a;
+    background-color: rgb(0, 200, 83) !important;
     color: aliceblue;
     width: 200px;
+}
+
+.popup-button:hover{
+ box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.16),
+ 0px 7px 8px 7px rgba(0, 0, 0, 0.23);
+    
 }
