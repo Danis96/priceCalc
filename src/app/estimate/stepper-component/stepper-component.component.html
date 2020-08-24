@@ -19,10 +19,6 @@
           <input matInput [formControl]="emailValidation" class="emailFormInput" #email name="email" type="text" placeholder="" autocomplete="off" ngModel required>
           <mat-error *ngIf="emailValidation.invalid">{{getErrorMessageEmail()}}</mat-error>
         </mat-form-field>
-        <!-- <p>Your Name *</p>
-        <input  class="emailFormInput" #name name="name" type="text" placeholder="Name" ngModel>
-        <p>Email adress*</p>
-        <input  class="emailFormInput" #email name="email" type="text" placeholder="Email address" ngModel> -->
         <h2>OPTIONAL</h2>
         <p class="question-paragraph">Choose if you want some of our aditional services</p>
       </div>
@@ -48,6 +44,6 @@
   <button *ngIf="num > 0" class="button previous" mat-button (click)="goBack(stepper)">Back</button>
   <button *ngIf="num !== fetchedJson.pages.length -1 " class="button next" [disabled]="buttonState()" mat-button
     (click)="goForward(stepper)">Next</button>
-  <button [class.spinner]="btnLoading" [disabled]="btnLoading" *ngIf=" num === fetchedJson.pages.length - 1 " class="button"
+  <button [class.spinner]="btnLoading" [disabled]="submitDisabled || btnLoading" *ngIf=" num === fetchedJson.pages.length - 1 " class="button"
      mat-raised-button (click)="getUsersAnswers()">Submit</button>
 </div>

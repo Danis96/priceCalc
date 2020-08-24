@@ -50,15 +50,12 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
   num = 0;
   checked = false;
   btnLoading = false;
+  submitDisabled = true;
   nameValidation = new FormControl('', [Validators.required]);
   emailValidation = new FormControl('', [Validators.required, Validators.email]);
 
   userAnswer = [];
-  isLoading =  false;
 
-  hideSpinner(){
-    this.isLoading = false;
-  }
 
   openSnackBar() {
     this._snackBar.open('You can only select one answer', '', {
@@ -152,7 +149,10 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
   ///Validation for name input field
   getErrorMessageName() {
     if (this.nameValidation.hasError('required')) {
+      this.submitDisabled = true;
       return 'You must enter a value';
+    } else {
+      this.submitDisabled = false;
     }
   }
 
@@ -160,7 +160,10 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
    ///Validation for email input field
    getErrorMessageEmail() {
     if (this.emailValidation.hasError('required')) {
+      this.submitDisabled = true;
       return 'You must enter a value';
+    } else {
+      this.submitDisabled = false;
     }
      return this.emailValidation.hasError('email') ? 'Not a valid email' : '';
   }
@@ -178,7 +181,7 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
     this.myStepper.previous();
     this.num -= 1;
   }
-  goForward(stepper: MatStepper, answer: any) {
+  goForward(stepper: MatStepper) {
     this.myStepper.next();
     this.num += 1;
   }
