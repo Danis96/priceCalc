@@ -25,7 +25,7 @@ export class PriceContainerComponentComponent implements OnDestroy {
     this.subscription = this.estimateService.getEstimatedTimeAndPrice().subscribe((priceAndTime) => {
        this.estimatedTP.time = priceAndTime.time;
        this.estimatedTP.price = priceAndTime.price;
-       this.days = Math.floor(this.estimatedTP.time / 24);
+       this.days = Math.floor(this.estimatedTP.time / 8);
     });
   }
 

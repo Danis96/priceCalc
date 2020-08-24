@@ -22,19 +22,19 @@ routerEmail.post("", (req, res) => {
 async function sendMail(user, callback) {
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-        service:'gmail',
+        // service:'gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
         auth: {
             user: process.env.EMAIL,
             pass: process.env.PASSWORD
         }
     });
 
-    /// ovdje ce biti email od kompanije
-    const companyEmail = 'dzefkadzefka@gmail.com';
-
     let mailOptions = {
         from: '"Tech387 - App Estimation"<technodemailer@gmail.com>', // sender address
-        to:  user.usersEmail, companyEmail, // list of receivers
+        to:  ` ${user.usersEmail}, support@tech387.com `, // list of receivers
         subject: "Regards from Tech387 Team - Here is your app estimation", // Subject line
         html: `<h1>Hi ${user.usersName}</h1><br>
                 <p>We are very happy for contacting you.</p>
