@@ -15,6 +15,30 @@
   margin: 1% 0%;
 }
 
+.mat-form-field{
+  width: 100%;
+}
+.mat-form-field label{
+  color:white;
+}
+.mat-input-element {
+  caret-color: white;
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: white;
+}
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: white;
+}
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: white;
+}
+::ng-deep .mat-form-field.mat-focused .mat-form-field-required-marker {
+  color: white;
+}
+::ng-deep .mat-form-field.mat-focused .mat-input-element {
+  color: white;
+}
 .emailFormInput {
   width: 110%;
   height: 35px;

@@ -9,10 +9,20 @@
     <form *ngIf="!isLoading" (submit)="onSendEmail(emailForm)" #emailForm="ngForm">
       <div class="emailForm" *ngIf="pages[0].showSubmitButton">
 
-        <p>Your Name *</p>
+        <mat-form-field class="prvi">
+          <label>Your name</label>
+          <input matInput [formControl]="inputValidation" class="emailFormInput"  #name name="name" type="text" placeholder="" autocomplete="off" ngModel required>
+          <mat-error *ngIf="inputValidation.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <label>Your email</label>
+          <input matInput [formControl]="inputValidation" class="emailFormInput" #email name="email" type="text" placeholder="" autocomplete="off" ngModel required>
+          <mat-error *ngIf="inputValidation.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <!-- <p>Your Name *</p>
         <input  class="emailFormInput" #name name="name" type="text" placeholder="Name" ngModel>
         <p>Email adress*</p>
-        <input  class="emailFormInput" #email name="email" type="text" placeholder="Email address" ngModel>
+        <input  class="emailFormInput" #email name="email" type="text" placeholder="Email address" ngModel> -->
         <h2>OPTIONAL</h2>
         <p class="question-paragraph">Choose if you want some of our aditional services</p>
       </div>

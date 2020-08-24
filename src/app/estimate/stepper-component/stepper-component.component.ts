@@ -8,6 +8,7 @@ import {Subscription} from "rxjs";
 import {UsersService} from "../../services/user.service";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: "app-stepper-component",
@@ -28,6 +29,7 @@ export class StepperComponentComponent implements  OnInit{
   num = 0;
   checked = false;
   btnLoading = false;
+  inputValidation = new FormControl('', [Validators.required, Validators.email]);
 
   userAnswer = [];
   isLoading =  false;
@@ -122,6 +124,16 @@ export class StepperComponentComponent implements  OnInit{
     } else {
       return !this.fetchedJson.pages[this.num].some((page) => page.chosen);
     }
+  }
+
+
+  ///Validation for input fields on email form
+  getErrorMessage() {
+    if (this.inputValidation.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    // return this.inputValidation.hasError('email') ? 'Not a valid email' : '';
   }
 
   changeWidth() {
