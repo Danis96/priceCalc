@@ -50,7 +50,8 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
   num = 0;
   checked = false;
   btnLoading = false;
-  inputValidation = new FormControl('', [Validators.required, Validators.email]);
+  nameValidation = new FormControl('', [Validators.required]);
+  emailValidation = new FormControl('', [Validators.required, Validators.email]);
 
   userAnswer = [];
   isLoading =  false;
@@ -148,11 +149,20 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
   }
 
 
-  ///Validation for input fields on email form
-  getErrorMessage() {
-    if (this.inputValidation.hasError('required')) {
+  ///Validation for name input field
+  getErrorMessageName() {
+    if (this.nameValidation.hasError('required')) {
       return 'You must enter a value';
     }
+  }
+
+
+   ///Validation for email input field
+   getErrorMessageEmail() {
+    if (this.emailValidation.hasError('required')) {
+      return 'You must enter a value';
+    }
+     return this.emailValidation.hasError('email') ? 'Not a valid email' : '';
   }
 
   changeWidth() {

@@ -11,13 +11,13 @@
 
         <mat-form-field class="prvi">
           <label>Your name</label>
-          <input matInput [formControl]="inputValidation" class="emailFormInput"  #name name="name" type="text" placeholder="" autocomplete="off" ngModel required>
-          <mat-error *ngIf="inputValidation.invalid">{{getErrorMessage()}}</mat-error>
+          <input matInput [formControl]="nameValidation" class="emailFormInput"  #name name="name" type="text" placeholder="" autocomplete="off" ngModel required>
+          <mat-error *ngIf="nameValidation.invalid">{{getErrorMessageName()}}</mat-error>
         </mat-form-field>
         <mat-form-field>
           <label>Your email</label>
-          <input matInput [formControl]="inputValidation" class="emailFormInput" #email name="email" type="text" placeholder="" autocomplete="off" ngModel required>
-          <mat-error *ngIf="inputValidation.invalid">{{getErrorMessage()}}</mat-error>
+          <input matInput [formControl]="emailValidation" class="emailFormInput" #email name="email" type="text" placeholder="" autocomplete="off" ngModel required>
+          <mat-error *ngIf="emailValidation.invalid">{{getErrorMessageEmail()}}</mat-error>
         </mat-form-field>
         <!-- <p>Your Name *</p>
         <input  class="emailFormInput" #name name="name" type="text" placeholder="Name" ngModel>
