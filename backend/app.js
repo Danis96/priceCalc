@@ -1,17 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const MongoClient = require("mongodb");
-const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 const app = express();
-require('dotenv').config();
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 
-/// getting the schemas
-const User = require('./models/userInput');
-const Questions = require('./models/questions');
-
+/// importing routes for posting and getting
+/// questions
+const questionRoutes = require('./routes/question');
+/// users
+const userRoutes = require('./routes/user');
+/// email
+const emailRoutes = require('./routes/email');
 
 
 /// connection to the database
@@ -129,5 +129,8 @@ async function sendMail(user, callback) {
 
   callback(info);
 }
+app.use("/api/JSON", questionRoutes);
+app.use('/api/user', userRoutes);
+app.use('/sendmail', emailRoutes);
 
 module.exports = app;
