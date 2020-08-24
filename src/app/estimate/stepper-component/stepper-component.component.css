@@ -243,6 +243,13 @@ html {
   box-sizing: border-box;
 }
 
+.mat-button,
+.mat-icon-button,
+.mat-stroked-button,
+.mat-flat-button {
+  box-sizing: content-box;
+}
+
 code {
   background-color: #9AA3AC;
   padding: 0 8px;
