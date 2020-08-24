@@ -36,7 +36,7 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
       /// so here I am checking is this.fetchedJson undefined,
      /// if it is that means that we are on the same route so fetch data again
       if(!this.fetchedJson) {
-        console.log('Prazan');
+        console.log('Reload on the same route');
         this.questionService.getQuestions();
         this.questionSubscription = this.questionService.getQuestionsUpdated()
             .subscribe((questions) => {
@@ -153,8 +153,6 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
     if (this.inputValidation.hasError('required')) {
       return 'You must enter a value';
     }
-
-    // return this.inputValidation.hasError('email') ? 'Not a valid email' : '';
   }
 
   changeWidth() {

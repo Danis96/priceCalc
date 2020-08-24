@@ -37,9 +37,6 @@ export class EstimateService {
           price: this.estimatedTimeAndPrice.price,
           time: this.estimatedTimeAndPrice.time,
         });
-      // }
-
-
   }
 }
 
