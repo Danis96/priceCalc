@@ -145,10 +145,3 @@ input.mat-input-element {
     }
   }
   
-
-  @media only screen and (min-width: 600px) {
-    .mat-horizontal-stepper-header-container {
-      max-width: 40px;
-    }
-  }
-  
