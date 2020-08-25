@@ -21,16 +21,17 @@ routerEmail.post("", (req, res) => {
 
 async function sendMail(user, callback) {
     // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-        // service:'gmail',
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true,
-        auth: {
-            user: process.env.EMAIL,
-            pass: process.env.PASSWORD
-        }
-    });
+    // create reusable transporter object using the default SMTP transport
+let transporter = nodemailer.createTransport({
+    service:'gmail',
+    // host: 'smtp.gmail.com',
+    // port: 465,
+    // secure: true,
+    auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD
+    }
+});
 
     let mailOptions = {
         from: '"Tech387 - App Estimation"<technodemailer@gmail.com>', // sender address
