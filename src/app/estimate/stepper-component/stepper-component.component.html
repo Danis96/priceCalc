@@ -16,8 +16,8 @@
         </mat-form-field>
         <mat-form-field>
           <label>Your email</label>
-          <input matInput [formControl]="emailValidation" class="emailFormInput" #email name="email" type="text" placeholder="" autocomplete="off" required>
-          <mat-error *ngIf="emailValidation.invalid">{{getErrorMessageEmail()}}</mat-error>
+          <input matInput [formControl]="emailReg" class="emailFormInput" #email name="email" type="text" placeholder="" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" autocomplete="off" required>
+          <mat-error *ngIf="emailReg.errors?.pattern">Email not valid</mat-error>
         </mat-form-field>
         <h2>OPTIONAL</h2>
         <p class="question-paragraph">Choose if you want some of our aditional services</p>
@@ -44,6 +44,6 @@
   <button *ngIf="num > 0" class="button previous" mat-button (click)="goBack(stepper)">Back</button>
   <button *ngIf="num !== fetchedJson.pages.length -1 " class="button next" [disabled]="buttonState()" mat-button
     (click)="goForward(stepper)">Next</button>
-  <button [class.spinner]="btnLoading" [disabled]="submitDisabled || btnLoading" *ngIf=" num === fetchedJson.pages.length - 1 " class="button"
+  <button [class.spinner]="btnLoading" [disabled]="!nameValidation.valid || !emailReg.valid" *ngIf=" num === fetchedJson.pages.length - 1 " class="button"
      mat-raised-button (click)="getUsersAnswers()">Submit</button>
 </div>

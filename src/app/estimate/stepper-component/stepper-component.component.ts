@@ -51,10 +51,14 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
   checked = false;
   btnLoading = false;
   submitDisabled = true;
+  emailReg = new FormControl();
   nameValidation = new FormControl('', [Validators.required]);
   emailValidation = new FormControl('', [Validators.required, Validators.email]);
 
   userAnswer = [];
+
+
+  
 
 
   openSnackBar() {
@@ -151,22 +155,25 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
     if (this.nameValidation.hasError('required')) {
       this.submitDisabled = true;
       return 'You must enter a value';
-    } else {
+    };
+
+    if (!this.nameValidation.hasError('required')) {
       this.submitDisabled = false;
-    }
+      console.log("hahahha")
+    };
   }
 
 
    ///Validation for email input field
-   getErrorMessageEmail() {
-    if (this.emailValidation.hasError('required')) {
-      this.submitDisabled = true;
-      return 'You must enter a value';
-    } else {
-      this.submitDisabled = false;
-    }
-     return this.emailValidation.hasError('email') ? 'Not a valid email' : '';
-  }
+  //  getErrorMessageEmail() {
+  //   if (this.emailValidation.hasError('required')) {
+  //     this.submitDisabled = true;
+  //     return 'You must enter a value';
+  //   } else {
+  //     this.submitDisabled = false;
+  //   }
+  //    return this.emailValidation.hasError('email') ? 'Not a valid email' : '';
+  // }
 
   changeWidth() {
     if (this.num === this.fetchedJson['pages'].length - 1) {
