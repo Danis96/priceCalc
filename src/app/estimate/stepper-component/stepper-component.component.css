@@ -329,6 +329,11 @@ code {
   animation: spinner .8s linear infinite;
 }
 
+/* ::ng-deep .mat-horizontal-stepper-header-container {
+  border: solid 1px red; 
+} */
+
+
 @media only screen and (max-width: 600px) {
   .buttons-container {
       display: flex;

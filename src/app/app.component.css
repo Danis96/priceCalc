@@ -8,3 +8,13 @@
 .mat-stepper-horizontal-line {
     display: none;
 }
+
+::ng-deep .mat-horizontal-stepper-header-container {
+    padding: 0 10px;
+  }
+  
+
+  ::ng-deep .mat-horizontal-stepper-header-container .mat-horizontal-stepper-header {
+    padding: 0 10px;
+  }
+  
