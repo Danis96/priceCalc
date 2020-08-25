@@ -2,15 +2,7 @@
     width: 100%;
 }
 
-.price-card {
-    height: 58px;
-    padding: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    border-radius: 0px 0px 4px 4px;
 
-}
 
 .mat-card {
     padding: 10px 10px 0px 10px;
@@ -59,4 +51,27 @@
     margin: 0;
     color: rgb(0, 200, 83);
 
+}
+
+
+@media only screen and (min-width: 768px) {
+    .price-card {
+        height: 58px;
+        padding: 5px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        border-radius: 0px 0px 4px 4px;
+    
+    }
+}
+@media only screen and (min-width: 600px) {
+    .price-card {
+        padding: 5px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        border-radius: 0px 0px 4px 4px;
+    
+    }
 }

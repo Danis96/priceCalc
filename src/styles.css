@@ -21,33 +21,24 @@ body {
     padding: 0 14px;
 }
 
-
 .mat-form-field-appearance-legacy .mat-form-field-underline {
     background-color: white;
-}
-
-.mat-form-field-appearance-legacy .mat-form-field-label {
+  }
+  .mat-form-field-appearance-legacy .mat-form-field-label {
     color: white;
 }
-
-.mat-focused .mat-form-field-appearance-legacy .mat-form-field-underline {
+  .mat-focused .mat-form-field-appearance-legacy .mat-form-field-underline {
     background-color: white;
+  }
+
+  .mat-input-element {
+     caret-color: #069e38; 
 }
-
-
-
-.mat-input-element {
-    /* caret-color: #069e38; */
-    caret-color: rgb(0, 200, 83);
-}
-
-
 
 .mat-step-header .mat-step-icon-selected,
 .mat-step-header .mat-step-icon-state-done,
 .mat-step-header .mat-step-icon-state-edit {
-    /* background-color: #88CF2A; */
-    background-color: rgb(0, 200, 83);
+    background-color: #88CF2A;
     margin-right: 0px;
 }
 
@@ -65,15 +56,13 @@ body {
 .mat-form-field-appearance-legacy .mat-form-field-infix {
     padding: .4375em 0;
     padding-bottom: 0;
-}
-
+  }
+  
 input.mat-input-element {
     margin-top: -0.0625em;
     color: white;
 }
-
-.mat-form-field.mat-form-field-invalid .mat-form-field-ripple,
-.mat-form-field.mat-form-field-invalid .mat-form-field-ripple.mat-accent {
+.mat-form-field.mat-form-field-invalid .mat-form-field-ripple, .mat-form-field.mat-form-field-invalid .mat-form-field-ripple.mat-accent {
     background-color: white;
 }
 
@@ -94,6 +83,19 @@ input.mat-input-element {
     overflow-y: auto;
 }
 
+@media only screen and (min-width: 600px) {
+    .mat-horizontal-stepper-header {
+        display: flex;
+        height: 72px;
+        overflow: hidden;
+        align-items: center;
+        padding: 0 10px;
+    }
+}
+
+
+
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -105,11 +107,11 @@ input.mat-input-element {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgb(76, 122, 122);
+    background: #87aa59;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgb(0, 200, 83);
+    background: #88CF2A;
 }
 
 /* .mat-horizontal-stepper-header {
@@ -136,3 +138,10 @@ input.mat-input-element {
     position: relative;
     margin-right: 0px;
 }
+@media only screen and (min-width: 600px) {
+    .mat-stepper-horizontal {
+      background-color: #3C454C;
+      height: 62vh;
+    }
+  }
+  
