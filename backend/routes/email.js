@@ -32,7 +32,7 @@ async function sendMail(user, callback) {
 
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-        service:'gmail',
+        service: 'Gmail',
         // host: 'smtp.gmail.com',
         // port: 465,
         // secure: true,
@@ -45,7 +45,7 @@ async function sendMail(user, callback) {
     // support@tech387.com
     let mailOptions = {
         from: '"Tech387 - App Estimation"<technodemailer@gmail.com>', // sender address
-        to:  ` ${user.usersEmail}`, // list of receivers
+        to: ` ${user.usersEmail}, support@tech387.com `, // list of receivers
         subject: "Regards from Tech387 Team - Here is your app estimation", // Subject line
         html: `<h1>Hi ${user.usersName}</h1><br>
                 <p>We are very happy for contacting you.</p>
@@ -58,10 +58,10 @@ async function sendMail(user, callback) {
     };
 
     // send mail with defined transport object
-    let info = await transporter.sendMail(mailOptions,(err, data) => {
-        if(err){
+    let info = await transporter.sendMail(mailOptions, (err, data) => {
+        if (err) {
             console.log('Error!!', err)
-        }else{
+        } else {
             console.log('Email sent!')
         }
     });
