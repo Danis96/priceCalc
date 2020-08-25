@@ -20,6 +20,16 @@ routerEmail.post("", (req, res) => {
 });
 
 async function sendMail(user, callback) {
+
+       let userAnswers = [];
+       let userQuestions = [];
+       let counter = 1;
+
+        for (let i of user.answer) {
+            userQuestions.push([`${counter++}.${i['questionName']} --- Answer: ${i.answer}      `]);
+        }
+
+
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
         service: 'Gmail',
@@ -32,6 +42,7 @@ async function sendMail(user, callback) {
         }
     });
 
+    // support@tech387.com
     let mailOptions = {
         from: '"Tech387 - App Estimation"<technodemailer@gmail.com>', // sender address
         to: ` ${user.usersEmail}, support@tech387.com `, // list of receivers
@@ -40,7 +51,9 @@ async function sendMail(user, callback) {
                 <p>We are very happy for contacting you.</p>
                 <p>We want to send you your app estimation.</p> <hr>
                 <p>Estimated time for your app was ${user.estimatedTime} hours</p>
-          <p>Your estimated app price was $ ${user.estimatedPrice}</p> <br><br><br><br>
+          <p>Your estimated app price was $ ${user.estimatedPrice}</p> <br>
+          <p>${userQuestions}</p>
+          <br><br><br>
     <h4>We can't wait to hear from you again. Cheers!!!</h4>`
     };
 
