@@ -1,5 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* Responsive - Media Query*/
+
+/* Smartphones */
+@media (min-width:300px) and (max-width: 599px) {
+    .mat-horizontal-stepper-content {
+        max-height: 210px;
+    }
+}
+
+@media (min-width:600px) and (max-width: 950px) {
+    .mat-horizontal-stepper-content {
+        max-height: 210px;
+    }
+}
+
+/* Normal screen */
+@media only screen and (min-width: 600px) {
+    .mat-horizontal-stepper-header {
+        display: flex;
+        height: 72px;
+        overflow: hidden;
+        align-items: center;
+        padding: 0 10px;
+    }
+
+    .mat-stepper-horizontal {
+        background-color: #3C454C;
+        height: 62vh;
+    }
+}
+
+
 html,
 body {
     height: 100%;
@@ -88,17 +120,6 @@ input.mat-input-element {
     overflow-y: auto;
 }
 
-@media only screen and (min-width: 600px) {
-    .mat-horizontal-stepper-header {
-        display: flex;
-        height: 72px;
-        overflow: hidden;
-        align-items: center;
-        padding: 0 10px;
-    }
-}
-
-
 
 
 ::-webkit-scrollbar {
@@ -146,12 +167,6 @@ input.mat-input-element {
     margin-right: 0px;
 }
 
-@media only screen and (min-width: 600px) {
-    .mat-stepper-horizontal {
-        background-color: #3C454C;
-        height: 62vh;
-    }
-}
 
 ::ng-deep .mat-horizontal-stepper-header-container {
     border: solid 1px red;
