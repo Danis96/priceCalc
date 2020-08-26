@@ -188,6 +188,17 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
     }
   }
 
+
+  ///function that returns a class for input fields based on number of page
+getClass(){
+  if(this.num === this.fetchedJson['pages'].length - 1){
+    return 'lastPageInput'
+  }else{
+    return 'inputGroup'
+  }
+}
+  
+
   @ViewChild("stepper") private myStepper: MatStepper;
   goBack(stepper: MatStepper) {
     this.myStepper.previous();

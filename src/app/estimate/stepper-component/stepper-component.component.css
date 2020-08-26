@@ -423,6 +423,63 @@ code {
   animation: spinner .8s linear infinite;
 }
 
+
+.lastPageInput{
+  text-align:left;
+  margin-left: 15px;
+  background-color: green;
+  margin-bottom: 15px;
+}
+
+
+.lastPageInput input[type=checkbox] + label {
+  margin: 0.2em;
+cursor: pointer;
+padding: 0.2em;
+}
+
+.lastPageInput input[type=checkbox] {
+display: none;
+}
+
+.lastPageInput input[type=checkbox] + label:before {
+  content: "\2714";
+  border: 0.1em solid #000;
+  border-radius: 0.2em;
+  display: inline-block;
+  width: 1.28em;
+  height: 1.2em;
+  padding-left: 0.3em;
+  padding-bottom: 0.6em;
+  margin-right: 0.2em;
+  vertical-align: bottom;
+  color: white;
+  opacity: 1;
+  transition: .2s;
+}
+
+
+.lastPageInput input[type=checkbox] + label:active:before {
+transform: scale(0);
+}
+
+input[type=checkbox]:checked + label:before {
+background-color: MediumSeaGreen;
+border-color: MediumSeaGreen;
+color: #fff;
+}
+
+input[type=checkbox]:disabled + label:before {
+transform: scale(1);
+border-color: #aaa;
+}
+
+.lastPageInput input[type=checkbox]:checked:disabled + label:before {
+transform: scale(1);
+background-color: #bfb;
+border-color: #bfb;
+}
+
 /* ::ng-deep .mat-horizontal-stepper-header-container {
   border: solid 1px red; 
 } */
