@@ -71,7 +71,7 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
     console.log('Empty');
   }
 
-  getTimeAndPrice(event, price: number, time: number, radio: boolean, num: number, pages:any, answer: any, chosen: boolean, pageID: number, i: number, page: any, questionName: string) {
+  getTimeAndPrice(event, price: number, time: number, radio: boolean, num: number, pages:any, answer: any, chosen: boolean, pageID: number, i: number, page: any, questionName: string, coefficient: number) {
        /// function for disabling other choices if one is checked
       /// in radio === true objects
        if(radio) {
@@ -81,8 +81,9 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
            }
          });
        }
-      this.addAnswersIfTheyAreChosen(chosen, answer, pageID,questionName);
-      this.estimateService.sendEstimatedTimeAndPrice(event, price, time, radio, num, pageID, pages, i);
+       console.log(coefficient);
+      this.addAnswersIfTheyAreChosen(chosen, answer, pageID, questionName);
+      this.estimateService.sendEstimatedTimeAndPrice(event, price, time, radio, num, pageID, pages, i, coefficient);
   }
 
   addAnswersIfTheyAreChosen(chosen: boolean, answer: any, pageID: number, questionName: string) {
@@ -213,3 +214,6 @@ getClass(){
     console.log("users email is ", form.value.email);
   }
 }
+
+
+// rgb(86, 189, 234) plava - current state
