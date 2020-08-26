@@ -1,3 +1,70 @@
+@media (min-width:300px) and (max-width: 599px) {
+  .headline>h4 {
+    margin: 8px 0 0 0;
+    /* padding-top: 10px; */
+  }
+
+  .buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    padding: 5px 10px;
+    /* max-width: 550px; */
+    margin: 10px auto;
+  }
+
+  .buttons-container>button {
+    padding: 0px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    padding: 5px 10px;
+    max-width: 550px;
+    margin: 10px auto;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .mat-stepper-horizontal {
+    background-color: #3C454C;
+    /* height: 62vh; */
+    max-height: 300px;
+  }
+
+  .mat-horizontal-stepper-header {
+    display: flex;
+    height: 72px;
+    overflow: hidden;
+    align-items: center;
+    padding: 0 10px;
+  }
+}
+
+@media only screen and (min-width: 300px) and (max-width: 700px) {
+  .mat-stepper-horizontal {
+    background-color: #3C454C;
+    /* height: 62vh; */
+    max-height: 300px;
+  }
+
+
+
+  .mat-horizontal-stepper-header {
+    display: flex;
+    height: 72px;
+    overflow: hidden;
+    align-items: center;
+    padding: 0 10px;
+  }
+}
+
 .emailForm {
   width: 80%;
   margin-left: 20px;
@@ -84,6 +151,7 @@
 .headline {
   text-align: center;
   border-bottom: 0.5px solid #2C2C2C;
+  padding: 10px;
 }
 
 .headline>h4 {
@@ -115,7 +183,7 @@
 }
 
 .form {
-  padding: 0 16px;
+  /* padding: 0 16px; */
   max-width: 550px;
   /* margin: 30px auto; */
   font-size: 18px;
@@ -125,21 +193,8 @@
 
 }
 
-@media only screen and (min-width: 600px) {
-  .mat-stepper-horizontal {
-    background-color: #3C454C;
-    height: 62vh;
-  }
-}
-@media only screen and (min-width: 600px) {
-  .mat-horizontal-stepper-header {
-      display: flex;
-      height: 72px;
-      overflow: hidden;
-      align-items: center;
-      padding: 0 10px;
-  }
-}
+
+
 
 .inputGroup {
   background-color: #fff;
@@ -332,16 +387,3 @@ code {
 /* ::ng-deep .mat-horizontal-stepper-header-container {
   border: solid 1px red; 
 } */
-
-
-@media only screen and (max-width: 600px) {
-  .buttons-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      align-content: center;
-      padding: 5px 10px;
-      max-width: 550px;
-      margin: 10px auto;
-  }
-}
