@@ -51,8 +51,8 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
   checked = false;
   btnLoading = false;
   submitDisabled = true;
-  emailReg = new FormControl();
   nameValidation = new FormControl('', [Validators.required]);
+  emailReg = new FormControl('', [Validators.required]);
   emailValidation = new FormControl('', [Validators.required, Validators.email]);
 
   userAnswer = [];
@@ -160,6 +160,11 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
     if (!this.nameValidation.hasError('required')) {
       this.submitDisabled = false;
       console.log("hahahha")
+    };
+  }
+  getErrorMessageEmail() {
+    if (this.emailReg.hasError('required')) {
+      return 'Email field cant be empty'
     };
   }
 
