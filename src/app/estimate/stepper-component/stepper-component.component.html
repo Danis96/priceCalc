@@ -18,6 +18,7 @@
           <label>Your email</label>
           <input matInput [formControl]="emailReg" class="emailFormInput" #email name="email" type="text" placeholder="" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" autocomplete="off" required>
           <mat-error *ngIf="emailReg.errors?.pattern">Email not valid</mat-error>
+          <mat-error *ngIf="emailReg.invalid">{{getErrorMessageEmail()}}</mat-error>
         </mat-form-field>
         <h2>OPTIONAL</h2>
         <p class="question-paragraph">Choose if you want some of our aditional services</p>
