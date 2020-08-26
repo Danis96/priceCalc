@@ -144,4 +144,9 @@ input.mat-input-element {
       height: 62vh;
     }
   }
+
+  ::ng-deep .mat-horizontal-stepper-header-container {
+    border: solid 1px red; 
+  }
+  
   
