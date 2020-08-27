@@ -17,14 +17,20 @@ export class PriceContainerComponentComponent implements OnDestroy {
   days = 0;
 
    estimatedTP: EstimatedTimeAndPrice = {
+     koeficijent:1,
      price: 0,
      time: 0,
    };
 
   constructor(public estimateService: EstimateService) {
     this.subscription = this.estimateService.getEstimatedTimeAndPrice().subscribe((priceAndTime) => {
-       this.estimatedTP.time = Math.floor(priceAndTime.time);
-       this.estimatedTP.price = priceAndTime.price;
+      if(this.estimatedTP.koeficijent === 0){
+        this.estimatedTP.price = 0;
+        this.estimatedTP.time = 0;
+      }
+      this.estimatedTP.koeficijent = priceAndTime.koeficijent;
+       this.estimatedTP.time = Math.floor(this.estimatedTP.koeficijent * priceAndTime.time);
+       this.estimatedTP.price =Math.floor(this.estimatedTP.koeficijent * priceAndTime.price);
        this.days = Math.floor(this.estimatedTP.time / 8);
     });
   }

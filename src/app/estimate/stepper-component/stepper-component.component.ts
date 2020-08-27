@@ -68,7 +68,7 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
   }
 
   emptyFun() {
-    console.log('Empty');
+    console.log('----------------------');
   }
 
   getTimeAndPrice(event, price: number, time: number, radio: boolean, num: number, pages:any, answer: any, chosen: boolean, pageID: number, i: number, page: any, questionName: string, coefficient: number) {
@@ -129,6 +129,7 @@ getBlack(){
     /// getting final versions of time and price through estimateService
     const time = this.estimateService.estimatedTimeAndPrice.time;
     const price = this.estimateService.estimatedTimeAndPrice.price;
+    const koeficijent = this.estimateService.estimatedTimeAndPrice.koeficijent;
     /// getting name and email
     const name = this.name.nativeElement.value;
     const email = this.email.nativeElement.value;
@@ -138,14 +139,14 @@ getBlack(){
     console.log('name ' + name.toString());
     console.log('email ' + email.toString());
     console.log(this.userAnswer);
-    this.usersService.getUsersAnswers(this.userAnswer, time, price, name, email);
+    this.usersService.getUsersAnswers(this.userAnswer, time, price, name, email , koeficijent );
 
 
     /// reset after submitting
     this.estimateService.estimatedTimeAndPrice.price = 0;
     this.estimateService.estimatedTimeAndPrice.time = 0;
     this.userAnswer = [];
-    this.estimateService.finalCoefficient = 0;
+    // this.estimateService.koeficijent = 0;
   }
 
   buttonState() {
