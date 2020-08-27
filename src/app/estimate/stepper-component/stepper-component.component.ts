@@ -140,6 +140,7 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
     this.estimateService.estimatedTimeAndPrice.price = 0;
     this.estimateService.estimatedTimeAndPrice.time = 0;
     this.userAnswer = [];
+    this.estimateService.finalCoefficient = 0;
   }
 
   buttonState() {
@@ -170,17 +171,6 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
   }
 
 
-   ///Validation for email input field
-  //  getErrorMessageEmail() {
-  //   if (this.emailValidation.hasError('required')) {
-  //     this.submitDisabled = true;
-  //     return 'You must enter a value';
-  //   } else {
-  //     this.submitDisabled = false;
-  //   }
-  //    return this.emailValidation.hasError('email') ? 'Not a valid email' : '';
-  // }
-
   changeWidth() {
     if (this.num === this.fetchedJson['pages'].length - 1) {
       return "200px";
@@ -209,11 +199,4 @@ getClass(){
     this.myStepper.next();
     this.num += 1;
   }
-  onSendEmail(form: NgForm) {
-    console.log("users name is ", form.value.name);
-    console.log("users email is ", form.value.email);
-  }
 }
-
-
-// rgb(86, 189, 234) plava - current state
