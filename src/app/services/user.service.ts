@@ -16,8 +16,8 @@ export class UsersService {
     getUsersAnswers(answer: any, time: number, price: number, name: string, email: string , koeficijent:number) {
         const userAnswer = {
             answer: answer,
-            estimatedTime: koeficijent * Math.floor(time),
-            estimatedPrice: koeficijent * price,
+            estimatedTime:  Math.floor(koeficijent * time),
+            estimatedPrice: Math.floor(koeficijent * price),
             usersName: name,
             usersEmail: email,
         }
