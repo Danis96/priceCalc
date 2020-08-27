@@ -1,6 +1,7 @@
 import {Injectable, OnInit} from '@angular/core';
 import {EstimatedTimeAndPrice} from "./estimatedTimeAndPrice";
 import {Observable, Subject} from "rxjs";
+
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({ providedIn: "root" })
@@ -9,7 +10,7 @@ export class EstimateService {
 
     infoFetched;
     coefficients = [];
-
+//ovo je najnovija verzija
     
 
   estimatedTimeAndPrice: EstimatedTimeAndPrice = {
