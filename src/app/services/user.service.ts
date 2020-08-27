@@ -13,11 +13,11 @@ export class UsersService {
 
     constructor(private http: HttpClient) {}
 
-    getUsersAnswers(answer: any, time: number, price: number, name: string, email: string ) {
+    getUsersAnswers(answer: any, time: number, price: number, name: string, email: string , koeficijent:number) {
         const userAnswer = {
             answer: answer,
-            estimatedTime: Math.floor(time),
-            estimatedPrice: price,
+            estimatedTime:  Math.floor(koeficijent * time),
+            estimatedPrice: Math.floor(koeficijent * price),
             usersName: name,
             usersEmail: email,
         }

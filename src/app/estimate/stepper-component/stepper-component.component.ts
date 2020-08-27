@@ -3,10 +3,17 @@ import {ViewChild} from '@angular/core';
 import {EstimateService} from '../estimate.service';
 import {MatStepper} from '@angular/material/stepper';
 import {NgForm} from '@angular/forms';
+<<<<<<< HEAD
 import {QuestionService} from '../../home/question.service';
 import {Subscription} from 'rxjs';
 import {UsersService} from '../../services/user.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+=======
+import {Subscription} from 'rxjs';
+import {UsersService} from '../../services/user.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {QuestionService} from '../../home/question.service';
+>>>>>>> 7406f0d565a226f90c9fb893e3bdb6592c31d631
 import {Router} from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
 
@@ -68,7 +75,11 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
   }
 
   emptyFun() {
+<<<<<<< HEAD
     console.log('Empty');
+=======
+    console.log('----------------------');
+>>>>>>> 7406f0d565a226f90c9fb893e3bdb6592c31d631
   }
 
   getTimeAndPrice(event, price: number, time: number, radio: boolean, num: number, pages:any, answer: any, chosen: boolean, pageID: number, i: number, page: any, questionName: string, coefficient: number) {
@@ -129,6 +140,10 @@ getBlack(){
     /// getting final versions of time and price through estimateService
     const time = this.estimateService.estimatedTimeAndPrice.time;
     const price = this.estimateService.estimatedTimeAndPrice.price;
+<<<<<<< HEAD
+=======
+    const koeficijent = this.estimateService.estimatedTimeAndPrice.koeficijent;
+>>>>>>> 7406f0d565a226f90c9fb893e3bdb6592c31d631
     /// getting name and email
     const name = this.name.nativeElement.value;
     const email = this.email.nativeElement.value;
@@ -138,14 +153,22 @@ getBlack(){
     console.log('name ' + name.toString());
     console.log('email ' + email.toString());
     console.log(this.userAnswer);
+<<<<<<< HEAD
     this.usersService.getUsersAnswers(this.userAnswer, time, price, name, email);
+=======
+    this.usersService.getUsersAnswers(this.userAnswer, time, price, name, email , koeficijent );
+>>>>>>> 7406f0d565a226f90c9fb893e3bdb6592c31d631
 
 
     /// reset after submitting
     this.estimateService.estimatedTimeAndPrice.price = 0;
     this.estimateService.estimatedTimeAndPrice.time = 0;
     this.userAnswer = [];
+<<<<<<< HEAD
     this.estimateService.finalCoefficient = 0;
+=======
+    // this.estimateService.koeficijent = 0;
+>>>>>>> 7406f0d565a226f90c9fb893e3bdb6592c31d631
   }
 
   buttonState() {
