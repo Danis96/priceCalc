@@ -85,6 +85,11 @@ export class StepperComponentComponent implements OnInit, OnDestroy {
       this.addAnswersIfTheyAreChosen(chosen, answer, pageID, questionName);
       this.estimateService.sendEstimatedTimeAndPrice(event, price, time, radio, num, pageID, pages, i, coefficient);
   }
+getBlack(){
+  return 'black';
+}
+
+ 
 
   addAnswersIfTheyAreChosen(chosen: boolean, answer: any, pageID: number, questionName: string) {
     /// collect selected answers
