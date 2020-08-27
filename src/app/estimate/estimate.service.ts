@@ -8,9 +8,12 @@ export class EstimateService {
 
 
     infoFetched;
-    finalCoefficient = 0;
+    coefficients = [];
+//ovo je najnovija verzija
+    
 
   estimatedTimeAndPrice: EstimatedTimeAndPrice = {
+    koeficijent: 0,
     price: 0,
     time: 0,
   }
@@ -23,28 +26,28 @@ export class EstimateService {
   }
 
     sendEstimatedTimeAndPrice(event, price: number, time: number, radio: boolean, num: number, pageID: number, pages:any, i:number, coefficient: number) {
-        if(event.target.checked) {
-            if(coefficient) {
-                 this.finalCoefficient += coefficient;
-                 console.log(this.finalCoefficient);
-            }
+        if(event.target.checked) { 
+          if(coefficient) {
+            let primljeniKoeficijent = coefficient;
+            this.estimatedTimeAndPrice.koeficijent += primljeniKoeficijent;
+          }
             if(!coefficient) {
-                let priceCoefficient = this.finalCoefficient * price;
-                let timeCoefficient = this.finalCoefficient * time;
-                console.log(this.finalCoefficient);
-                this.estimatedTimeAndPrice.price += priceCoefficient;
-                this.estimatedTimeAndPrice.time += timeCoefficient;
+                let primljenaCijena = price;
+                let primljenoVrijeme = time;
+                this.estimatedTimeAndPrice.price += primljenaCijena;
+                this.estimatedTimeAndPrice.time += primljenoVrijeme;
                 console.log('Price: ' + this.estimatedTimeAndPrice.price.toString());
                 console.log('Time: ' + this.estimatedTimeAndPrice.time.toString());
             }
         }  else {
+          console.log("unchecked");
             if(coefficient) {
-                this.finalCoefficient -= coefficient;
-                console.log(this.finalCoefficient);
+              let primljeniKoeficijent = coefficient;
+              this.estimatedTimeAndPrice.koeficijent -= primljeniKoeficijent;
             }
             if(!coefficient) {
-                let priceCoefficient = this.finalCoefficient * price;
-                let timeCoefficient = this.finalCoefficient * time;
+                let priceCoefficient = price;
+                let timeCoefficient = time;
                 this.estimatedTimeAndPrice.price -= priceCoefficient;
                 this.estimatedTimeAndPrice.time  -= timeCoefficient;
                 console.log('Price: ' + this.estimatedTimeAndPrice.price.toString());
@@ -52,8 +55,10 @@ export class EstimateService {
             }
         }
         this.subject.next({
+          // koeficijent: this.estimatedTImeAndPrice.koeficijent,
           price: this.estimatedTimeAndPrice.price,
           time: this.estimatedTimeAndPrice.time,
+          koeficijent : this.estimatedTimeAndPrice.koeficijent
         });
   }
 }

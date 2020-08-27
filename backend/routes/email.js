@@ -23,7 +23,11 @@ async function sendMail(user, callback) {
        let counter = 1;
 
         for (let i of user.answer) {
+<<<<<<< HEAD
             userQuestions.push([` <div>${counter++}.${i['questionName']} --- Answer: ${i.answer}</div>      `]);
+=======
+            userQuestions.push([` <div>${counter++}.${i['questionName']} --- Answer: ${i.answer}</div>`]);
+>>>>>>> 7406f0d565a226f90c9fb893e3bdb6592c31d631
         }
 
 
